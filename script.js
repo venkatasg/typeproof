@@ -29,21 +29,29 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Fetch Google Fonts list
-    fetch('https://www.googleapis.com/webfonts/v1/webfonts?key=') // NOTE: This will not work without an API key.
-        .then(response => {
-            if (!response.ok) throw new Error('Failed to fetch Google Fonts list.');
-            return response.json();
-        })
-        .then(data => {
-            if (data.items) {
-                availableFonts = data.items.map(font => font.family);
-                apiErrorMessage.style.display = 'none';
-            } else {
-                setDefaultFonts();
-            }
+    fetch('https://prooftext.gvenkata1994.workers.dev')
+        .then(response => response.text())
+        .then(apiKey => {
+            fetch(`https://www.googleapis.com/webfonts/v1/webfonts?key=${apiKey}`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to fetch Google Fonts list.');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.items) {
+                        availableFonts = data.items.map(font => font.family);
+                        apiErrorMessage.style.display = 'none';
+                    } else {
+                        setDefaultFonts();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Google Fonts:', error);
+                    setDefaultFonts();
+                });
         })
         .catch(error => {
-            console.error('Error fetching Google Fonts:', error);
+            console.error('Error fetching API key:', error);
             setDefaultFonts();
         });
 
