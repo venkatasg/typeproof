@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typeface Proof</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Typeface proofing without pangrams</h1>
+        <div class="search-container">
+            <input type="text" id="font-search" placeholder="Search Google Fonts&hellip;">
+            <!-- <button id="apply-font">Preview</button> -->
+        </div>
+        <p id="api-error-message" class="error-message" style="display: none;">Could not load Google Fonts. Showcasing Helvetica.</p>
+        <h2 id="font-name-heading"></h2>
+        <div class="toolbar-container">
+            <div class="control-section">
+                <div class="control-title">Formatting</div>
+                <div class="control-group">
+                    <button id="bold-btn" class="control-btn"><b>B</b></button>
+                    <button id="italic-btn" class="control-btn"><i>I</i></button>
+                </div>
+            </div>
+            <div class="toggle-container">
+                <div id="toggle-switch" class="toggle-switch">
+                    <div class="toggle-option active" data-proof="lowercase">Lowercase</div>
+                    <div class="toggle-option" data-proof="uppercase">Uppercase</div>
+                    <div class="toggle-slider"></div>
+                </div>
+            </div>
+            <div class="control-section">
+                <div class="control-title">Font size</div>
+                <div class="control-group">
+                    <button id="decrease-size-btn" class="control-btn">-</button>
+                    <button id="increase-size-btn" class="control-btn">+</button>
+                </div>
+            </div>
+        </div>
+        <div id="proof-text" class="proof-text-container"></div>
+        <div class="footer">
+            <h2>About</h2>
+            <p>Inspired by <a href="https://jonathanhoefler.com/articles/how-to-proof-a-typeface" target="_blank">Jonathan Hoefler's essay</a> that illustrated the problems with pangrams as typeface proofs, I wanted to build a simple site that lets you proof any font from Google Fonts with his proof texts. Please refer to his article to understand the rationale behind the chosen proof texts, and how to read them efficiently.</p>
+            <p>Almost all of the site was built with <a href="https://github.com/google-gemini/gemini-cli">Gemini CLI</a>, with me only needing to jump in a few times to fix some minor issues. If you find any errors or problems with the site, please do contact me via email, Mastodon, o bsky.</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

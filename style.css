@@ -1,0 +1,276 @@
+:root {
+    --background-color: #ffffff;
+    --text-color: #404040;
+    --link-color: #0366d6;
+    --toggle-background: #e9ecef;
+    --toggle-slider-background: #0366d6;
+    --container-background: #ffffff;
+    --container-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --input-border-color: #ccc;
+    --input-background-color: #ffffff;
+    --input-text-color: #333;
+    --button-background-color: #0366d6;
+    --button-hover-background-color: #0056b3;
+    --suggestion-background-color: white;
+    --suggestion-hover-background-color: #f0f0f0;
+    --suggestion-border-color: #ccc;
+    --toggle-text-color: #495057;
+    --toggle-active-text-color: #fff;
+    --proof-border-color: #eee;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #222222;
+        --text-color: #ffffff;
+        --link-color: #79b8ff;
+        --toggle-background: #3a3a3a;
+        --toggle-slider-background: #79b8ff;
+        --container-background: #2d2d2d;
+        --container-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        --input-border-color: #555;
+        --input-background-color: #3a3a3a;
+        --input-text-color: #ffffff;
+        --button-background-color: #79b8ff;
+        --button-hover-background-color: #5d9eff;
+        --suggestion-background-color: #3a3a3a;
+        --suggestion-hover-background-color: #555;
+        --suggestion-border-color: #555;
+        --toggle-text-color: #ccc;
+        --toggle-active-text-color: #222;
+        --proof-border-color: #444;
+    }
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--container-background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: var(--container-shadow);
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1.5em;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.search-container {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#font-search {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px 0 0 4px;
+    background-color: var(--input-background-color);
+    color: var(--input-text-color);
+}
+
+/* #apply-font {
+    padding: 10px 20px;
+    border: 1px solid var(--button-background-color);
+    background-color: var(--button-background-color);
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+
+#apply-font:hover {
+    background-color: var(--button-hover-background-color);
+} */
+
+#font-name-heading {
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--proof-border-color);
+    padding-top: 20px;
+}
+
+.error-message {
+    text-align: center;
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+.proof-text-container {
+    font-size: 18px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.footer {
+    border-top: 1px solid var(--proof-border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.toolbar-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: calc(1rem + 5px);;
+}
+
+.toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+    margin-top:25px;
+}
+
+.toggle-switch {
+    display: flex;
+    position: relative;
+    background-color: var(--toggle-background);
+    border-radius: 50px;
+    padding: 5px 10px 5px 5px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+    width: 240px;
+}
+
+.toggle-option {
+    padding: 10px 20px;
+    cursor: pointer;
+    z-index: 1;
+    color: var(--toggle-text-color);
+    transition: color 0.4s ease-in-out;
+    text-align: center;
+    flex: 1;
+}
+
+.toggle-option.active {
+    color: var(--toggle-active-text-color);
+}
+
+.toggle-slider {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: calc(50% - 5px);
+    height: 80%;
+    background-color: var(--toggle-slider-background);
+    border-radius: 50px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.3);
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.2), rgba(255,255,255,0));
+    transition: transform 0.3s ease-in-out;
+}
+
+#suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border: 1px solid var(--suggestion-border-color);
+    border-top: none;
+    z-index: 10;
+    background-color: var(--suggestion-background-color);
+    display: none;
+}
+
+.suggestion {
+    padding: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.suggestion:hover, .suggestion.selected {
+    background-color: var(--suggestion-hover-background-color);
+}
+
+.control-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: var(--text-color);
+}
+
+.control-group {
+    display: flex;
+    gap: 10px;
+    background-color: var(--toggle-background);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.control-btn {
+    background-color: transparent;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+.control-btn:hover {
+    background-color: var(--suggestion-hover-background-color);
+}
+
+.control-btn.active {
+    background-color: var(--toggle-slider-background);
+    color: var(--toggle-active-text-color);
+    border-color: var(--toggle-slider-background);
+}
+
+@media (max-width: 540px) {
+    .toolbar-container {
+        display: grid;
+        grid-template-areas:
+            "toggle toggle"
+            "style size";
+        grid-gap: 10px;
+    }
+
+    .toggle-container {
+        grid-area: toggle;
+        margin-bottom: 10px;
+    }
+
+    .control-section:nth-of-type(1) {
+        grid-area: style;
+        justify-self: start;
+    }
+
+    .control-section:nth-of-type(2) {
+        grid-area: size;
+        justify-self: end;
+    }
+}
+
+
