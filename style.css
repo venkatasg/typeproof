@@ -1,6 +1,7 @@
 :root {
     --background-color: #ffffff;
     --text-color: #404040;
+    --error-color: #d73a49;
     --link-color: #0366d6;
     --toggle-background: #e9ecef;
     --toggle-slider-background: #0366d6;
@@ -23,6 +24,7 @@
     :root {
         --background-color: #222222;
         --text-color: #ffffff;
+        --error-color: #d7878f;
         --link-color: #79b8ff;
         --toggle-background: #3a3a3a;
         --toggle-slider-background: #79b8ff;
@@ -76,6 +78,7 @@ a {
 
 a:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .search-container {
@@ -117,13 +120,13 @@ a:hover {
 
 .error-message {
     text-align: center;
-    color: #dc3545;
+    color: var(--error-color);
     margin-top: 10px;
 }
 
 .proof-text-container {
-    font-size: 18px;
-    line-height: 1.8;
+    font-size: 20px;
+    line-height: 1.5;
     white-space: pre-wrap;
 }
 

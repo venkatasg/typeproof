@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const proofTextContainer = document.getElementById('proof-text');
     const fontSearchInput = document.getElementById('font-search');
-    // const applyFontButton = document.getElementById('apply-font');
+    const applyArialButton = document.getElementById('apply-arial');
+    const applyHelveticaButton = document.getElementById('apply-helvetica');
     const suggestionsContainer = document.createElement('div');
     suggestionsContainer.id = 'suggestions-container';
     fontSearchInput.parentNode.insertBefore(suggestionsContainer, fontSearchInput.nextSibling);
@@ -110,7 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // applyFontButton.addEventListener('click', () => applyFont(fontSearchInput.value.trim()));
+    applyArialButton.addEventListener('click', () => applyFont("Arial"));
+    applyHelveticaButton.addEventListener('click', () => applyFont("Helvetica"));
     
     fontSearchInput.addEventListener('keydown', (e) => {
         const suggestions = Array.from(suggestionsContainer.querySelectorAll('.suggestion'));
