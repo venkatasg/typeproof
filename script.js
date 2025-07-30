@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleSlider = document.querySelector('.toggle-slider');
     const fontNameHeading = document.getElementById('font-name-heading');
     const apiErrorMessage = document.getElementById('api-error-message');
+    const noapiErrorMessage = document.getElementById('noapi-error-message');
 
     const boldBtn = document.getElementById('bold-btn');
     const italicBtn = document.getElementById('italic-btn');
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let proofTexts = { lowercase: '', uppercase: '' };
     let currentProof = 'lowercase';
     let selectedSuggestionIndex = -1;
-    let currentFontSize = 18;
+    let currentFontSize = 20;
 
     // Function to set default fonts and show error message
     const setDefaultFonts = () => {
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.items) {
                         availableFonts = data.items.map(font => font.family);
                         apiErrorMessage.style.display = 'none';
+                        noapiErrorMessage.style.display = 'block';
                     } else {
                         setDefaultFonts();
                     }
@@ -221,12 +223,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     increaseSizeBtn.addEventListener('click', () => {
-        currentFontSize++;
+        currentFontSize+=2;
         proofTextContainer.style.fontSize = `${currentFontSize}px`;
     });
 
     decreaseSizeBtn.addEventListener('click', () => {
-        currentFontSize--;
+        currentFontSize-=2;
         proofTextContainer.style.fontSize = `${currentFontSize}px`;
     });
 });

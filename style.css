@@ -124,6 +124,12 @@ a:hover {
     margin-top: 10px;
 }
 
+.no-error-message {
+    text-align: center;
+    color: var(--text-color);
+    margin-top: 10px;
+}
+
 .proof-text-container {
     font-size: 20px;
     line-height: 1.5;
@@ -276,4 +282,45 @@ a:hover {
     }
 }
 
+/* Tooltip container */
+.tooltip-container {
+  position: relative; /* Essential for positioning the tooltip text */
+  display: inline-block; /* Allows the container to wrap the button */
+}
+
+/* Tooltip text */
+.tooltip-text {
+  visibility: hidden; /* Hidden by default */
+  width: 120px;
+  background-color: var(--text-color);
+  color: var(--background-color);
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Positioning */
+  position: absolute;
+  z-index: 1; /* Ensures tooltip appears above other content */
+  top: 125%; /* Positions the tooltip above the button */
+  left: 50%;
+  margin-left: -60px; /* Centers the tooltip horizontally */
+}
+
+/* Show the tooltip text when hovering over the container */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Optional: Add an arrow to the tooltip */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%; /* Positions the arrow at the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px; /* Centers the arrow */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--text-color) transparent; /* Creates the arrow shape */
+}
 
