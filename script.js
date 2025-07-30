@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle font application
     const applyFont = (fontName) => {
         if (fontName) {
-            if (availableFonts.includes(fontName) && !['Helvetica', 'Arial'].includes(fontName)) {
+            if (availableFonts.includes(fontName)) {
                 const fontUrl = `https://fonts.googleapis.com/css?family=${fontName.replace(/ /g, '+')}`;
                 let link = document.querySelector(`link[href="${fontUrl}"]`);
                 if (!link) {
