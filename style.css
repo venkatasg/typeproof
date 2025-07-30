@@ -301,7 +301,7 @@ a:hover {
   /* Positioning */
   position: absolute;
   z-index: 1; /* Ensures tooltip appears above other content */
-  top: 125%; /* Positions the tooltip above the button */
+  bottom: 125%; /* Positions the tooltip above the button */
   left: 50%;
   margin-left: -60px; /* Centers the tooltip horizontally */
 }
@@ -316,11 +316,11 @@ a:hover {
 .tooltip-text::after {
   content: "";
   position: absolute;
-  bottom: 100%; /* Positions the arrow at the bottom of the tooltip */
+  top: 100%; /* Positions the arrow at the bottom of the tooltip */
   left: 50%;
   margin-left: -5px; /* Centers the arrow */
   border-width: 5px;
   border-style: solid;
-  border-color: transparent transparent var(--text-color) transparent; /* Creates the arrow shape */
+  border-color: var(--text-color) transparent transparent transparent; /* Creates the arrow shape */
 }
 
