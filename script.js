@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleSlider = document.querySelector('.toggle-slider');
     const fontNameHeading = document.getElementById('font-name-heading');
     const apiErrorMessage = document.getElementById('api-error-message');
-    const noapiErrorMessage = document.getElementById('no-api-error-message');
 
     const boldBtn = document.getElementById('bold-btn');
     const italicBtn = document.getElementById('italic-btn');
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const setDefaultFonts = () => {
         availableFonts = ['Helvetica', 'Arial'];
         apiErrorMessage.style.display = 'block';
-        noapiErrorMessage.style.display = 'none';
     };
 
     // Fetch Google Fonts list
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.items) {
                         availableFonts = data.items.map(font => font.family);
                         apiErrorMessage.style.display = 'none';
-                        noapiErrorMessage.style.display = 'block';
                     } else {
                         setDefaultFonts();
                     }

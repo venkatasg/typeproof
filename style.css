@@ -124,10 +124,9 @@ a:hover {
     margin-top: 10px;
 }
 
-.no-error-message {
+.helvetica-arial {
     text-align: center;
     color: var(--text-color);
-    margin-top: 10px;
 }
 
 .proof-text-container {
