@@ -305,10 +305,12 @@ a:hover {
   margin-left: -60px; /* Centers the tooltip horizontally */
 }
 
-/* Show the tooltip text when hovering over the container */
-.tooltip-container:hover .tooltip-text {
-  visibility: visible;
-  opacity: 1;
+/* Show the tooltip text when hovering over the container only on pointer devices */
+@media (hover: hover) {
+    .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    }
 }
 
 /* Optional: Add an arrow to the tooltip */
