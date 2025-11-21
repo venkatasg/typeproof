@@ -16,12 +16,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const italicBtn = document.getElementById('italic-btn');
     const increaseSizeBtn = document.getElementById('increase-size-btn');
     const decreaseSizeBtn = document.getElementById('decrease-size-btn');
+    const fontUploadInput = document.getElementById('font-upload');
 
     let availableFonts = ['Helvetica', 'Arial']; // Default fonts
     let proofTexts = { lowercase: '', uppercase: '' };
     let currentProof = 'lowercase';
     let selectedSuggestionIndex = -1;
     let currentFontSize = 20;
+    let customFontName = null;
 
     // Function to set default fonts and show error message
     const setDefaultFonts = () => {
@@ -228,5 +230,55 @@ document.addEventListener('DOMContentLoaded', () => {
     decreaseSizeBtn.addEventListener('click', () => {
         currentFontSize-=2;
         proofTextContainer.style.fontSize = `${currentFontSize}px`;
+    });
+
+    // Handle custom font upload
+    fontUploadInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        // Validate file type
+        const fileName = file.name.toLowerCase();
+        if (!fileName.endsWith('.ttf') && !fileName.endsWith('.otf')) {
+            alert('Please upload a valid TTF or OTF font file.');
+            return;
+        }
+
+        // Create a unique font family name based on the file name
+        customFontName = `CustomFont_${Date.now()}`;
+        const fontBaseName = file.name.replace(/\.(ttf|otf)$/i, '');
+
+        // Read the file and create a data URL
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const fontData = event.target.result;
+
+            // Remove any existing custom font style
+            const existingStyle = document.getElementById('custom-font-style');
+            if (existingStyle) {
+                existingStyle.remove();
+            }
+
+            // Create a new style element with @font-face rule
+            const styleElement = document.createElement('style');
+            styleElement.id = 'custom-font-style';
+            styleElement.textContent = `
+                @font-face {
+                    font-family: '${customFontName}';
+                    src: url('${fontData}');
+                }
+            `;
+            document.head.appendChild(styleElement);
+
+            // Apply the custom font
+            proofTextContainer.style.fontFamily = `'${customFontName}', sans-serif`;
+            fontNameHeading.style.fontFamily = `'${customFontName}', sans-serif`;
+            fontNameHeading.textContent = fontBaseName;
+
+            // Clear the search input
+            fontSearchInput.value = '';
+        };
+
+        reader.readAsDataURL(file);
     });
 });

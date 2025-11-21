@@ -11,7 +11,10 @@
         <h1>Typeface proofing without pangrams</h1>
         <div class="search-container">
             <input type="text" id="font-search" placeholder="Search Google Fonts&hellip;">
-            <!-- <button id="apply-font">Preview</button> -->
+            <label for="font-upload" id="upload-label" class="upload-btn">
+                Or Upload Font
+                <input type="file" id="font-upload" accept=".ttf,.otf" style="display: none;">
+            </label>
         </div>
         <p id="api-error-message" class="error-message" style="display: none;">Could not load Google Fonts.</p>
         <p class="helvetica-arial" style="display: block;">Try comparing <a id='apply-helvetica'>Helvetica</a> and <a id="apply-arial">Arial</a> (only works on Windows/Android if you have Helvetica installed) and see if you can spot <a href="https://ragbag.tumblr.com/post/187708731/arial-helvetica-on-friday-i-hosted-a-screening">the differences</a>😉.</p>
