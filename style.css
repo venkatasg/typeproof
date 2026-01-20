@@ -6,7 +6,6 @@
     --toggle-background: #e9ecef;
     --toggle-slider-background: #0366d6;
     --container-background: #ffffff;
-    --container-shadow: 0 2px 4px rgba(0,0,0,0.3);
     --input-border-color: #ccc;
     --input-background-color: #ffffff;
     --input-text-color: #333;
@@ -29,7 +28,6 @@
         --toggle-background: #3a3a3a;
         --toggle-slider-background: #79b8ff;
         --container-background: #2d2d2d;
-        --container-shadow: 0 2px 4px rgba(0,0,0,0.5);
         --input-border-color: #555;
         --input-background-color: #3a3a3a;
         --input-text-color: #ffffff;
@@ -58,8 +56,6 @@ body {
     margin: 0 auto;
     background: var(--container-background);
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: var(--container-shadow);
 }
 
 h1 {
